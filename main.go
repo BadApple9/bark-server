@@ -146,6 +146,8 @@ func main() {
 		Action: func(c *cli.Context) error {
 			fiberApp := fiber.New(fiber.Config{
 				ServerHeader:      "Bark",
+				ProxyHeader: "X-Forwarded-For",
+				EnableIPValidation: true,
 				CaseSensitive:     c.Bool("case-sensitive"),
 				StrictRouting:     c.Bool("strict-routing"),
 				Concurrency:       c.Int("concurrency"),
